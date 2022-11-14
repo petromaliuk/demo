@@ -5,24 +5,32 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "films")
 public class Film {
     @Id
     @Column(name = "id", nullable = false, unique = true)
+    @NotNull
     private Integer id;
 
     @Column(name = "title", nullable = false, length = 100)
+    @NotBlank
     private String title;
 
     @Column(name = "description", nullable = false, length = 400)
+    @NotBlank
     private String description;
 
     @Column(name = "category", nullable = false, length = 50)
+    @NotBlank
     private String category;
 
     @Column(name = "duration", nullable = false)
+    @Min(0)
     private int duration;
 
     public Film() { }

@@ -1,11 +1,12 @@
 package com.kma.demo.service;
 
 import com.kma.demo.entity.User;
+import com.kma.demo.exceptions.EmptyParameterException;
+import com.kma.demo.exceptions.InvalidParameterException;
 import com.kma.demo.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
 
 @Service
 public class UserService {
@@ -27,5 +28,14 @@ public class UserService {
             if (user.getEmail().equals(email) && user.getPassword().equals(password)) return user;
         }
         return null;
+    }
+
+    public User createUser(Integer id, String email, String password, Integer role) throws EmptyParameterException, InvalidParameterException {
+        if (id == null || email == null || password == null || role == null) throw new EmptyParameterException();
+        if (id < 0 || id > 1000 || email.length() > 100 || !email.matches(".*@gmail\\.com") || password.length() > 100 || role < 1 || role > 2) throw new InvalidParameterException();
+
+        User user = new User(id, email, password, role);
+        userRepository.save(user);
+        return user;
     }
 }
