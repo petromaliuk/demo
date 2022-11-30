@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    ...
+</head>
+<body>
+...
+<header>
+    <div th:replace="header :: myheader"></div>
+</header>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Static header</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="hero-unit">
+        <h1>ADMIN</h1>
+        <form class="profile-container" action="/add-film" method="post">
+            <label><b>Title</b></label>
+            <input class="film-input text" type="text" placeholder="Enter title" name="title" required>
+
+            <label><b>Description</b></label>
+            <input class="film-input text" type="text" placeholder="Enter description" name="description" required>
+
+            <label><b>Category</b></label>
+            <input class="film-input text" type="text" placeholder="Enter category" name="category" required>
+
+            <label><b>Duration</b></label>
+            <input class="film-input text" type="text" placeholder="Enter duration" name="duration" required>
+
+
+            <button type="submit" class="film-add-button">Add Film</button>
+
+        </form>
+    </div>
+
+</div>
+...
+</body>
+<footer>
+<div>Admin page, SpringBoot project, NaUKMA 2022</div>
+</footer>
+</html>

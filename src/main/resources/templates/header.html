@@ -1,0 +1,28 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<body>
+<div th:fragment="myheader">
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <div class="header">
+        <div class="logo"> <a class="logo-text" href="/">Cinema Tickets</a> </div>
+        <div class="login">
+            <form class="form" sec:authorize="isAnonymous()">
+                <button onclick = "window.location.href='/login'" formaction="/login" type="submit" class="button button-login">Login</button>
+            </form>
+            <form class="form" sec:authorize="isAuthenticated()">
+                <button  onclick = "window.location.href='/logout'" formaction="/logout" type="submit" class="button button-login">Logout</button>
+            </form>
+            <form class="form" sec:authorize="hasRole('VIEWER')">
+                <button  onclick = "window.location.href='/viewer'" formaction="/viewer" type="submit" class="button button-signup">My Page</button>
+            </form>
+            <form class="form" sec:authorize="hasRole('ADMIN')">
+                <button  onclick = "window.location.href='/admin'" formaction="/admin" type="submit" class="button button-signup">Admin Page</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

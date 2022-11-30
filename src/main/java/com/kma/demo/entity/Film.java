@@ -43,6 +43,16 @@ public class Film {
         this.duration = duration;
     }
 
+    public Film(String title, String description, String category, int duration) {
+        this.title = title;
+        this.description = description;
+        this.category = category;
+        this.duration = duration;
+    }
+
+
+
+
     public Integer getId() {
         return id;
     }

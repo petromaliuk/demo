@@ -1,5 +1,6 @@
 package com.kma.demo.controller;
 
+
 import com.kma.demo.DemoApplication;
 import com.kma.demo.entity.User;
 import com.kma.demo.exceptions.EmptyParameterException;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -36,6 +38,12 @@ public class LoginController {
     private UserRepository userRepository;
 
     private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
+
+
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
 
 
 
@@ -105,7 +113,7 @@ public class LoginController {
 
     @ExceptionHandler({InvalidParameterException.class, EmptyParameterException.class})
     public ResponseEntity<String> handleException() {
-        return ResponseEntity.status(500).body("Server error");
+        return ResponseEntity.status(500).body("Server admin-page-error404.html");
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
